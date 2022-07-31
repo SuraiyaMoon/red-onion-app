@@ -1,11 +1,14 @@
 import React from 'react';
 import Banner from './Banner';
+import Breakfast from './Breakfast';
+import Menu from './Menu';
 
 const Home = () => {
     return (
         <div>
-            <h2 className='text-primary'>Home</h2>
-            <Banner></Banner>
+            <Menu></Menu>
+            <Breakfast></Breakfast>
+
 
         </div>
     );
