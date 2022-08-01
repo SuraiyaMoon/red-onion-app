@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Reason = ({ reason }) => {
     const { img, description, tittle } = reason;
@@ -11,6 +12,7 @@ const Reason = ({ reason }) => {
                 </figure>
                 <h2 className="text-xl font-semibold text-center">{tittle}</h2>
                 <p>{description}</p>
+                <Link className='text-green-400' style={{ textDecoration: "underline" }} to='/more'>See more</Link>
             </div>
         </div>
     );

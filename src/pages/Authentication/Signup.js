@@ -57,7 +57,7 @@ const Signup = () => {
                         <img style={{ width: '130px' }} src={logo} alt="" />
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                             <label className='label'>
                                 {errors.name?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.name.message}</span>}
                                 {errors.name?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors?.name?.message}</span>}
@@ -71,7 +71,7 @@ const Signup = () => {
                                 type="text" placeholder="Enter your Name" className="input  w-full max-w-xs bg-base-200" />
 
                         </div>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                             <label className='label'>
                                 {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
                                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors?.email?.message}</span>}
@@ -89,7 +89,7 @@ const Signup = () => {
                                 type="email" placeholder="Enter your email address" className="input  w-full max-w-xs bg-base-200" />
 
                         </div>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                             <label className='label'>
                                 {errors.password?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.password.message}</span>}
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors?.password?.message}</span>}
@@ -108,7 +108,7 @@ const Signup = () => {
 
 
                         </div>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                             <label className='label'>
                                 {errors.confirmPassword?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.confirmPassword.message}</span>}
                                 {errors.confirmPassword?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors?.confirmPassword?.message}</span>}
@@ -133,7 +133,7 @@ const Signup = () => {
                     <p className='text-red-600'><small>Already have an account? <Link style={{ textDecoration: 'underline' }} to="/login">Go to Login</Link></small></p>
 
 
-                    <div class="flex flex-col w-full border-opacity-50">
+                    <div className="flex flex-col w-full border-opacity-50">
                         <div className="divider">OR</div>
                         <button className='btn btn-outline btn-primary'>Continue With google</button>
                     </div>

@@ -9,6 +9,7 @@ import Menu from './pages/Home/Menu';
 import Dinner from './pages/Home/Dinner';
 import Login from './pages/Authentication/Login';
 import Signup from './pages/Authentication/Signup';
+import NotMatch from './pages/Shared/NotMatch';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         </Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
+        <Route path='*' element={<NotMatch />}></Route>
 
       </Routes>
     </div>

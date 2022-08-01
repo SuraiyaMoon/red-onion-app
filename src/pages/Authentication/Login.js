@@ -16,7 +16,7 @@ const Login = () => {
                         <img style={{ width: '130px' }} src={logo} alt="" />
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                             <label className='label'>
                                 {errors.email?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.email.message}</span>}
                                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors?.email?.message}</span>}
@@ -34,7 +34,7 @@ const Login = () => {
                                 type="email" placeholder="Enter your email address" className="input input-bordered w-full max-w-xs" />
 
                         </div>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                             {/* <label className="label">
                             <span className="label-text">Email</span>
                         </label> */}
@@ -61,7 +61,7 @@ const Login = () => {
                     <p className='text-green-800'><small>New to <span className=' font-semibold'>Red-</span><span className='font-semibold'>Onion</span> Foods? <Link style={{ textDecoration: 'underline' }} to="/signup">Go to signup</Link></small></p>
 
 
-                    <div class="flex flex-col w-full border-opacity-50">
+                    <div className="flex flex-col w-full border-opacity-50">
                         <div className="divider">OR</div>
                         <button className='btn btn-outline btn-primary'>Continue With google</button>
                     </div>

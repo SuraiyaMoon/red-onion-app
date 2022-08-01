@@ -15,9 +15,9 @@ const Banner = () => {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-3xl font-bold">Best Food Waiting For Your Belly</h1>
 
-                    <div class="input-group">
-                        <input type="text" placeholder="Search your Food" class="input w-full max-w-xs" />
-                        <button class="btn btn-primary  text-xs">
+                    <div className="input-group">
+                        <input type="text" placeholder="Search your Food" className="input w-full max-w-xs" />
+                        <button className="btn btn-primary  text-xs">
                             Search
                         </button>
                     </div>
