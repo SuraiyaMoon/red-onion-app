@@ -8,6 +8,7 @@ import Lunch from './pages/Home/Lunch';
 import Menu from './pages/Home/Menu';
 import Dinner from './pages/Home/Dinner';
 import Login from './pages/Authentication/Login';
+import Signup from './pages/Authentication/Signup';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="dinner" element={<Dinner />} />
         </Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='/signup' element={<Signup />}></Route>
 
       </Routes>
     </div>
