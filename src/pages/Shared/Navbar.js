@@ -40,7 +40,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 <div className="flex-none">
                     <ul className="menu menu-horizontal p-0">
-                        <li><a>Login</a></li>
+                        <li><Link to='/login'>Login</Link></li>
                     </ul>
                 </div>
 

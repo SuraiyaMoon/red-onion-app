@@ -2,6 +2,7 @@ import React from 'react';
 import {
     NavLink, Outlet
 } from 'react-router-dom';
+import Banner from './Banner';
 
 const Menu = () => {
     const navLinkStyles = ({ isActive }) => {
@@ -13,6 +14,7 @@ const Menu = () => {
 
     return (
         <div>
+            <Banner></Banner>
             <div className='flex justify-evenly my-12'>
                 <NavLink style={navLinkStyles}
                     className={`text-xl font-semibold `} to="/">Breakfast</NavLink>

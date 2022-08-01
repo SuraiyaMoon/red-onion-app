@@ -17,7 +17,9 @@ const Dinner = () => {
         { id: 6, name: 'Full Dinner Fried Toast Brunch', description: 'How we dream about our Future', price: 3.99, img: dinnerPhoto6 }
     ]
     return (
-        <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1'>
+        <div>
+
+            <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1'>
             {
                 dinner.map(item => <DinnerItem
                     key={item.id}
@@ -25,6 +27,7 @@ const Dinner = () => {
                 ></DinnerItem>)
             }
 
+            </div>
         </div>
     );
 };

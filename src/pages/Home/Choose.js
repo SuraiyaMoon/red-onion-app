@@ -12,11 +12,11 @@ const Choose = () => {
     ]
     return (
         <div className='my-12'>
-            <div className='text-start mx-12'>
+            <div className='text-start mx-12 mb-8'>
                 <h2 className=' text-xl font-semibold'>Why you Choose us</h2>
                 <p className=''>Barton waited twenty always repair in within we do.An delighted offending curiosity <br /> my is dashwoods at. Boy prosperous increasing surrounded</p>
             </div>
-            <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1 '>
+            <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1 mx-6 '>
                 {
                     chosenReasons.map(reason => <Reason
                         key={reason.id}

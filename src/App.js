@@ -6,14 +6,13 @@ import Home from './pages/Home/Home';
 import Breakfast from './pages/Home/Breakfast';
 import Lunch from './pages/Home/Lunch';
 import Menu from './pages/Home/Menu';
-import Banner from './pages/Home/Banner';
 import Dinner from './pages/Home/Dinner';
+import Login from './pages/Authentication/Login';
 
 function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
-      <Banner></Banner>
       <Routes>
         <Route path='/' element={<Home />}></Route>
 
@@ -22,6 +21,7 @@ function App() {
           <Route path="lunch" element={<Lunch />} />
           <Route path="dinner" element={<Dinner />} />
         </Route>
+        <Route path='/login' element={<Login />}></Route>
 
       </Routes>
     </div>
