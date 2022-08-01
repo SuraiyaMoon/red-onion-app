@@ -1,14 +1,55 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
-import logo from '../../images/logo2.png'
+import { Link, useNavigate } from 'react-router-dom';
+import logo from '../../images/logo2.png';
+import bannerBackground from '../../images/bannerbackground.png';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 
 const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+
+    let signupError;
+
+
+    //create user with email and pass
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+
+    const navigate = useNavigate();
+    const onSubmit = data => {
+        const email = data.email;
+        const password = data.password;
+        const confirmPassword = data.confirmPassword;
+        if (password === confirmPassword) {
+            createUserWithEmailAndPassword(email, password)
+            navigate('/home')
+        }
+        else {
+            alert('Please check your password')
+        }
+
+    };
+    if (error) {
+        return signupError = <p className='text-error'>{error.message}</p>
+    }
+
+    if (user) {
+        navigate('/home')
+    }
     return (
-        <div className='flex items-center min-h-screen justify-center'>
+        <div style={{
+            backgroundImage: `url(${bannerBackground})`,
+            backgroundSize: "cover",
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center'
+        }} className='flex items-center min-h-screen justify-center'>
             <div className="card  w-96 bg-base-100 shadow-xl ">
                 <div className="card-body">
 
@@ -86,6 +127,7 @@ const Signup = () => {
 
 
                         </div>
+                        {signupError}
                         <input className='btn btn-primary text-white w-full max-w-xs mt-6' type="submit" value="Signup" />
                     </form>
                     <p className='text-red-600'><small>Already have an account? <Link style={{ textDecoration: 'underline' }} to="/login">Go to Login</Link></small></p>
