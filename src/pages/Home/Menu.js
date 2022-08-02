@@ -21,6 +21,7 @@ const Menu = () => {
                 <NavLink style={navLinkStyles} className='text-xl font-semibold' to="/menu/lunch">Lunch</NavLink>
                 <NavLink style={navLinkStyles} className='text-xl font-semibold' to="/menu/dinner">Dinner</NavLink>
             </div>
+
             <Outlet />
         </div>
     );

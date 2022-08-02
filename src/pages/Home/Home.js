@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../Shared/Footer';
 import Breakfast from './Breakfast';
-import Choose from './Choose';
+import Choose from '../Shared/Choose';
 import Menu from './Menu';
 
 const Home = () => {
@@ -9,7 +9,6 @@ const Home = () => {
         <div>
             <Menu></Menu>
             <Breakfast></Breakfast>
-            <Choose></Choose>
             <Footer></Footer>
 
 

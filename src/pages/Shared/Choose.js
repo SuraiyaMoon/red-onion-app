@@ -1,3 +1,5 @@
+import { faBell } from '@fortawesome/free-regular-svg-icons';
+import { faTruckFront, faTruck } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import reasonImg1 from '../../images/adult-blur-blurred-background-687824.png';
 import reasonImg2 from '../../images/architecture-building-city-2047397.png';
@@ -17,12 +19,24 @@ const Choose = () => {
                 <p className=''>Barton waited twenty always repair in within we do.An delighted offending curiosity <br /> my is dashwoods at. Boy prosperous increasing surrounded</p>
             </div>
             <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1 mx-6 '>
-                {
-                    chosenReasons.map(reason => <Reason
-                        key={reason.id}
-                        reason={reason}
-                    ></Reason>)
-                }
+                <Reason
+                    img={reasonImg1}
+                    description='Keep your system in sync with automated web hook based notifications each time link paid and how we dream about our future'
+                    tittle='Fast Delivery'
+                    icon={faTruckFront}
+                ></Reason>
+                <Reason
+                    img={reasonImg3}
+                    description='Keep your system in sync with automated web hook based notifications each time link paid and how we dream about our future'
+                    tittle='A Good Auto Responder'
+                    icon={faBell}
+                ></Reason>
+                <Reason
+                    img={reasonImg2}
+                    description='Keep your system in sync with automated web hook based notifications each time link paid and how we dream about our future'
+                    tittle='Home Delivery'
+                    icon={faTruck}
+                ></Reason>
             </div>
         </div>
     );

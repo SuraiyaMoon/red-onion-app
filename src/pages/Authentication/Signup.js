@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../images/logo2.png';
 import bannerBackground from '../../images/bannerbackground.png';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 
 
 const Signup = () => {
@@ -21,23 +22,35 @@ const Signup = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
+    //update 
+    const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
+
+
 
     const navigate = useNavigate();
-    const onSubmit = data => {
+    const onSubmit = async data => {
         const email = data.email;
         const password = data.password;
         const confirmPassword = data.confirmPassword;
+        const displayName = data.name;
+        console.log(data, 'data')
         if (password === confirmPassword) {
-            createUserWithEmailAndPassword(email, password)
+            await createUserWithEmailAndPassword(email, password)
+            await updateProfile({ displayName })
+
             navigate('/home')
         }
         else {
             alert('Please check your password')
         }
+        console.log(data, 'update')
 
     };
-    if (error) {
-        return signupError = <p className='text-error'>{error.message}</p>
+    if (loading || updating) {
+        return <Loading></Loading>
+    }
+    if (error || updatingError) {
+        return signupError = <p className='text-error'>{error.message}</p> || <p className='text-error'>{updatingError.message}</p>
     }
 
     if (user) {

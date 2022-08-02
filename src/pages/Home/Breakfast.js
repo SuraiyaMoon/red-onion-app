@@ -5,6 +5,8 @@ import breakfast3 from '../../images/breakfast/breakfast3.png'
 import breakfast4 from '../../images/breakfast/breakfast4.png'
 import breakfast5 from '../../images/breakfast/breakfast5.png'
 import breakfast6 from '../../images/breakfast/breakfast6.png'
+import CheckoutBtn from '../Shared/CheckoutBtn';
+import Choose from '../Shared/Choose';
 import BreakfastItem from './BreakfastItem';
 
 
@@ -26,9 +28,12 @@ const Breakfast = () => {
                         item={breakfastItem}
                     ></BreakfastItem>)
                 }
+
+
+
             </div>
-
-
+            <CheckoutBtn></CheckoutBtn>
+            <Choose></Choose>
 
         </div>
     );

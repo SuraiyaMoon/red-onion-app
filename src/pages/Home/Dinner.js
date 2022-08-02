@@ -6,6 +6,9 @@ import dinnerPhoto3 from '../../images/dinner/dinner3.png';
 import dinnerPhoto4 from '../../images/dinner/dinner4.png';
 import dinnerPhoto5 from '../../images/dinner/dinner5.png';
 import dinnerPhoto6 from '../../images/dinner/dinner6.png';
+import CheckoutBtn from '../Shared/CheckoutBtn';
+import Choose from '../Shared/Choose';
+import Footer from '../Shared/Footer';
 
 const Dinner = () => {
     const dinner = [
@@ -28,6 +31,9 @@ const Dinner = () => {
             }
 
             </div>
+            <CheckoutBtn></CheckoutBtn>
+            <Choose></Choose>
+            <Footer></Footer>
         </div>
     );
 };

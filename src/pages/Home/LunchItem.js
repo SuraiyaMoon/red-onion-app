@@ -16,9 +16,7 @@ const LunchItem = ({ item }) => {
                 <h2 className="text-xl font-semibold text-center">{name}</h2>
                 <p>{description}</p>
                 <p>Price: ${price}</p>
-                <div className="card-actions justify-center">
-                    <button className="btn btn-primary">Add to cart</button>
-                </div>
+
             </div>
         </div>
     );
