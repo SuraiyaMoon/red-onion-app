@@ -5,11 +5,12 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Breakfast from './pages/Home/Breakfast';
 import Lunch from './pages/Home/Lunch';
-import Menu from './pages/Home/Menu';
 import Dinner from './pages/Home/Dinner';
 import Login from './pages/Authentication/Login';
 import Signup from './pages/Authentication/Signup';
 import NotMatch from './pages/Shared/NotMatch';
+import Menu from './pages/Home/Menu';
+import Detail from './pages/Home/Detail';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="lunch" element={<Lunch />} />
           <Route path="dinner" element={<Dinner />} />
         </Route>
+        <Route path='/detail' element={<Detail />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='*' element={<NotMatch />}></Route>

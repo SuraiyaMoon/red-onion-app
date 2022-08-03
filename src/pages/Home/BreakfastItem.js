@@ -1,7 +1,8 @@
 import React from 'react';
 
 const BreakfastItem = ({ item }) => {
-    const { name, img, description, price } = item;
+    const { id, name, img, description, price } = item;
+
     return (
 
 

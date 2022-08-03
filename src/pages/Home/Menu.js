@@ -2,7 +2,7 @@ import React from 'react';
 import {
     NavLink, Outlet
 } from 'react-router-dom';
-import Banner from './Banner';
+import Banner from '../Shared/Banner';
 
 const Menu = () => {
     const navLinkStyles = ({ isActive }) => {

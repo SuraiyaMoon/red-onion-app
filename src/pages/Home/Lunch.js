@@ -5,6 +5,7 @@ import lunchPhoto3 from '../../images/lunch/lunch3.png'
 import lunchPhoto4 from '../../images/lunch/lunch4.png'
 import lunchPhoto5 from '../../images/lunch/lunch5.png'
 import lunchPhoto6 from '../../images/lunch/lunch6.png'
+import Banner from '../Shared/Banner';
 import CheckoutBtn from '../Shared/CheckoutBtn';
 import Choose from '../Shared/Choose';
 import Footer from '../Shared/Footer';
@@ -21,7 +22,6 @@ const Lunch = () => {
     ]
     return (
         <div>
-
             <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1'>
                 {
                     lunch.map(item => <LunchItem
