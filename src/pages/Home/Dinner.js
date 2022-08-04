@@ -25,7 +25,7 @@ const Dinner = () => {
             <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1'>
             {
                 dinner.map(item => <DinnerItem
-                    key={item.id}
+                    key={item._id}
                     item={item}
                 ></DinnerItem>)
             }

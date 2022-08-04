@@ -1,9 +1,12 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import logo from '../../images/logo2.png'
+import Loading from './Loading';
 
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
@@ -19,6 +22,9 @@ const Navbar = () => {
             </>
         }
     </>
+    if (loading) {
+        return <Loading></Loading>
+    }
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start flex">
@@ -37,9 +43,9 @@ const Navbar = () => {
                 </div>
 
                 <a className="btn btn-ghost normal-case text-xl">
-                    <img style={
+                    <Link to='/home'> <img style={
                         { width: '150px' }
-                    } src={logo} alt="" />
+                    } src={logo} alt="" /></Link>
                 </a>
             </div>
             <div className="navbar hidden lg:flex">
@@ -48,22 +54,19 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <Link to="/myOrder"><FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon></Link>
+
                 <div className="flex-none">
-                    <ul className="menu menu-horizontal p-0">
+                    <ul className="menu menu-horizontal p-0 flex items-center">
                         {
-                            user ? <button className="btn btn-outline btn-xs btn-primary text-white" onClick={logOut}>Logout</button>
+                            user ? <button className="btn btn-outline btn-xs btn-primary text-white mx-2" onClick={logOut}>Logout</button>
                                 :
                                 <li><Link to='/login'>Login</Link></li>
                         }
+                        <button className="btn  btn-xs btn-primary text-white" ><Link to="/signup">Sign up</Link></button>
                     </ul>
                 </div>
 
-                <button className="btn btn-ghost btn-circle">
-                    <div className="indicator">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                        <span className="badge badge-primary badge-sm indicator-item"></span>
-                    </div>
-                </button>
             </div>
         </div>
     );

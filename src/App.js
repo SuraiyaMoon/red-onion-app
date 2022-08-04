@@ -11,6 +11,7 @@ import Signup from './pages/Authentication/Signup';
 import NotMatch from './pages/Shared/NotMatch';
 import Menu from './pages/Home/Menu';
 import Detail from './pages/Home/Detail';
+import Order from './pages/Order/Order';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/detail' element={<Detail />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
+        <Route path='/myOrder' element={<Order />}></Route>
         <Route path='*' element={<NotMatch />}></Route>
 
       </Routes>
