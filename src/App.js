@@ -10,7 +10,7 @@ import Login from './pages/Authentication/Login';
 import Signup from './pages/Authentication/Signup';
 import NotMatch from './pages/Shared/NotMatch';
 import Menu from './pages/Home/Menu';
-import Detail from './pages/Home/Detail';
+import Detail from './pages/Detail/Detail';
 import Order from './pages/Order/Order';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
           <Route path="lunch" element={<Lunch />} />
           <Route path="dinner" element={<Dinner />} />
         </Route>
-        <Route path='/detail' element={<Detail />}></Route>
+        <Route path='/detail/:id' element={<Detail />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/myOrder' element={<Order />}></Route>
