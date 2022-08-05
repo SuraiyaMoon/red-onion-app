@@ -14,6 +14,9 @@ import BreakfastDetail from './pages/Detail/BreakfastDetail';
 import Order from './pages/Order/Order';
 import LunchDetail from './pages/Detail/LunchDetail';
 import DinnerDetail from './pages/Detail/DinnerDetail';
+import { ToastContainer } from 'react-toastify';
+import RequireAuth from './pages/Authentication/RequireAuth';
+
 
 function App() {
   return (
@@ -28,15 +31,26 @@ function App() {
           <Route path="lunch" element={<Lunch />} />
           <Route path="dinner" element={<Dinner />} />
         </Route>
-        <Route path='/breakfastDetail/:id' element={<BreakfastDetail />}></Route>
-        <Route path='/lunchDetail/:id' element={< LunchDetail />}></Route>
-        <Route path='/dinnerDetail/:id' element={< DinnerDetail />}></Route>
+        <Route path='/breakfastDetail/:id' element={
+          <RequireAuth>
+            <BreakfastDetail />
+          </RequireAuth>
+        }></Route>
+        <Route path='/lunchDetail/:id' element={<RequireAuth>
+          < LunchDetail />
+        </RequireAuth>}></Route>
+        <Route path='/dinnerDetail/:id' element={
+          <RequireAuth>
+            < DinnerDetail />
+          </RequireAuth>
+        }></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/myOrder' element={<Order />}></Route>
         <Route path='*' element={<NotMatch />}></Route>
 
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import userEvent from '@testing-library/user-event';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import DetailMenu from './DetailMenu';
 
@@ -33,6 +33,22 @@ const ShowDetail = ({ detail }) => {
             quantity: quantity,
             total: price * quantity,
         }
+        fetch('http://localhost:5000/order', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success(`${user?.displayName} your order placed successfully`)
+                }
+                else {
+                    toast.error('An error occur.Please check')
+                }
+            })
         console.log(order)
     }
     return (

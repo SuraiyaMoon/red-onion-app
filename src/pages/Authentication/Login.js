@@ -1,14 +1,18 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import logo from '../../images/logo2.png';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import Loading from '../Shared/Loading';
 
 
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const location = useLocation();
+    const navigate = useNavigate();
+    let from = location.state?.from.pathname || '/';
 
     //sign in with email and pass 
     const [
@@ -17,6 +21,15 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    //sign in with gmail
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
+    if (user || googleUser) {
+        navigate(from, { replace: true })
+    }
+    if (loading || googleLoading) {
+        return <Loading></Loading>
+    }
 
     const onSubmit = data => {
         const email = data.email;
@@ -51,9 +64,6 @@ const Login = () => {
 
                         </div>
                         <div className="form-control w-full max-w-xs">
-                            {/* <label className="label">
-                            <span className="label-text">Email</span>
-                        </label> */}
                             <label className='label'>
                                 {errors.password?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.password.message}</span>}
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors?.password?.message}</span>}
@@ -69,8 +79,6 @@ const Login = () => {
                                 }
                             })}
                                 type="password" placeholder="Enter your Password" className="input input-bordered w-full max-w-xs" />
-
-
                         </div>
                         <input className='btn btn-primary text-white w-full max-w-xs mt-6' type="submit" value="Login" />
                     </form>
@@ -79,7 +87,7 @@ const Login = () => {
 
                     <div className="flex flex-col w-full border-opacity-50">
                         <div className="divider">OR</div>
-                        <button className='btn btn-outline btn-primary'>Continue With google</button>
+                        <button onClick={() => signInWithGoogle()} className='btn btn-outline btn-primary'>Continue With google</button>
                     </div>
                 </div>
 
