@@ -10,8 +10,10 @@ import Login from './pages/Authentication/Login';
 import Signup from './pages/Authentication/Signup';
 import NotMatch from './pages/Shared/NotMatch';
 import Menu from './pages/Home/Menu';
-import Detail from './pages/Detail/Detail';
+import BreakfastDetail from './pages/Detail/BreakfastDetail';
 import Order from './pages/Order/Order';
+import LunchDetail from './pages/Detail/LunchDetail';
+import DinnerDetail from './pages/Detail/DinnerDetail';
 
 function App() {
   return (
@@ -26,7 +28,9 @@ function App() {
           <Route path="lunch" element={<Lunch />} />
           <Route path="dinner" element={<Dinner />} />
         </Route>
-        <Route path='/detail/:id' element={<Detail />}></Route>
+        <Route path='/breakfastDetail/:id' element={<BreakfastDetail />}></Route>
+        <Route path='/lunchDetail/:id' element={< LunchDetail />}></Route>
+        <Route path='/dinnerDetail/:id' element={< DinnerDetail />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/myOrder' element={<Order />}></Route>

@@ -1,12 +1,47 @@
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import userEvent from '@testing-library/user-event';
+import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import DetailMenu from './DetailMenu';
 
 const ShowDetail = ({ detail }) => {
-    const { name, img, description, price } = detail;
+    const { _id, name, img, description, price } = detail;
+    const [user] = useAuthState(auth)
+    const [quantity, setQuantity] = useState(1);
+    const handleIncrease = () => {
+        const newQuantity = quantity + 1;
+        setQuantity(newQuantity)
+
+    }
+    const handleDecrease = () => {
+        if (quantity <= 1) {
+            alert('You have at least order one item ')
+        }
+        else {
+            const newQuantity = quantity - 1;
+            setQuantity(newQuantity)
+        }
+    }
+    const handleOrder = () => {
+        const order = {
+            email: user?.email,
+            userName: user?.displayName,
+            foodName: name,
+            img: img,
+            quantity: quantity,
+            total: price * quantity,
+        }
+        console.log(order)
+    }
     return (
 
-        <div className="hero-content flex-col lg:flex-row-reverse justify-between px-12">
+        <div>
+            <DetailMenu></DetailMenu>
+            <div className="hero-content flex-col lg:flex-row-reverse justify-between px-20">
+
+
             <img src={img} className="max-w-sm rounded-lg " />
             <div className='lg:text-start '>
                 <h1 className="lg:text-5xl font-bold text-3xl">{name}</h1>
@@ -16,12 +51,15 @@ const ShowDetail = ({ detail }) => {
                     <p className='text-4xl font-bold mx-2'>${price}</p>
                     <div class=" flex ">
 
-                        <button className='btn btn-outline border-r-0 rounded-lg rounded-r-none'><FontAwesomeIcon className='text-primary ' icon={faMinus}></FontAwesomeIcon></button>
-                        <button className="btn w-3/4 btn-outline rounded-none border-x-0">1</button>
-                        <button className='btn btn-outline rounded-lg rounded-l-none border-l-0 '><FontAwesomeIcon className='text-primary' icon={faPlus}></FontAwesomeIcon></button>
+                            <button onClick={handleDecrease} className='btn btn-outline border-r-0 rounded-lg rounded-r-none'><FontAwesomeIcon className='text-primary ' icon={faMinus}></FontAwesomeIcon></button>
+                            <button className="btn w-3/4 btn-outline rounded-none border-x-0">{quantity}</button>
+                            <button onClick={handleIncrease} className='btn btn-outline rounded-lg rounded-l-none border-l-0 '><FontAwesomeIcon className='text-primary' icon={faPlus}></FontAwesomeIcon></button>
 
 
+                        </div>
                     </div>
+                    <button onClick={() => handleOrder(_id)} class="btn btn-xs btn-primary">Add cart</button>
+
                 </div>
             </div>
         </div>

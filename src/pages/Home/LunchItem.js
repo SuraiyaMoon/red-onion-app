@@ -1,10 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LunchItem = ({ item }) => {
-    const { name, img, description, price } = item;
+    const { _id, name, img, description, price } = item;
+    const navigate = useNavigate();
+    const navigateToShowDetail = id => {
+        navigate(`/lunchDetail/${id}`)
+    }
 
     return (
-        <div className="card w-96  mx-auto ">
+        <div className="card w-96  mx-auto " onClick={() => navigateToShowDetail(_id)}>
             <div className="card-body">
                 <figure>
                     <img style={
