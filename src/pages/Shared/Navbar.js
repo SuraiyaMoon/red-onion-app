@@ -3,6 +3,8 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useEffect, useState } from "react"
+
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import logo from '../../images/logo2.png'
@@ -10,10 +12,33 @@ import Loading from './Loading';
 
 const Navbar = () => {
     const [user, loading] = useAuthState(auth);
+    const [orders, setOrders] = useState([]);
+
+
+
+
+
+
+    useEffect(() => {
+        if (user) {
+            const email = user?.email;
+            fetch(`http://localhost:5000/orderByEmail?email=${email}`)
+                .then(res => res.json())
+                .then(data => {
+
+                    setOrders(data)
+
+
+
+                })
+        }
+    }, [user])
     const logOut = () => {
         signOut(auth)
+        setOrders([])
 
     }
+
     const navItem = <>
         <li><Link to="/">Home</Link></li>
         {
@@ -25,6 +50,7 @@ const Navbar = () => {
     if (loading) {
         return <Loading></Loading>
     }
+
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start flex">
@@ -54,8 +80,10 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/myOrder"><FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon></Link>
-
+                <div class="indicator">
+                    <Link to="/myOrder"><FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon></Link>
+                    <span class="badge badge-primary badge-xs indicator-item">{orders.length}</span>
+                </div>
                 <div className="flex-none">
                     <ul className="menu menu-horizontal p-0 flex items-center">
                         {

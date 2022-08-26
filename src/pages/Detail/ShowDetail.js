@@ -1,13 +1,16 @@
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { reload } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import DetailMenu from './DetailMenu';
 
 const ShowDetail = ({ detail }) => {
     const { _id, name, img, description, price } = detail;
+    const navigate = useNavigate();
     const [user] = useAuthState(auth)
     const [quantity, setQuantity] = useState(1);
     const handleIncrease = () => {
@@ -32,6 +35,7 @@ const ShowDetail = ({ detail }) => {
             img: img,
             quantity: quantity,
             total: price * quantity,
+            status: 'unpaid'
         }
         fetch('http://localhost:5000/order', {
             method: "POST",
@@ -44,6 +48,8 @@ const ShowDetail = ({ detail }) => {
             .then(data => {
                 if (data.acknowledged) {
                     toast.success(`${user?.displayName} your order placed successfully`)
+                    navigate('/myOrder')
+                    window.location.reload();
                 }
                 else {
                     toast.error('An error occur.Please check')

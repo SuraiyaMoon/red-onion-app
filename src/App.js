@@ -11,7 +11,7 @@ import Signup from './pages/Authentication/Signup';
 import NotMatch from './pages/Shared/NotMatch';
 import Menu from './pages/Home/Menu';
 import BreakfastDetail from './pages/Detail/BreakfastDetail';
-import Order from './pages/Order/Order';
+import Order from './pages/Order/Orders';
 import LunchDetail from './pages/Detail/LunchDetail';
 import DinnerDetail from './pages/Detail/DinnerDetail';
 import { ToastContainer } from 'react-toastify';
