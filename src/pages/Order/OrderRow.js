@@ -1,7 +1,11 @@
 import React from 'react';
 
-const OrderRow = ({ order, index }) => {
-    const { foodName, quantity, status, img } = order;
+
+const OrderRow = ({ order, index, deletingOrder }) => {
+    const { foodName, quantity, status, img, _id } = order;
+
+
+
     return (
 
         <tr>
@@ -20,7 +24,7 @@ const OrderRow = ({ order, index }) => {
             </td>
             <td>{quantity}</td>
             <td className='text-primary font-semibold'>{status}</td>
-            <td ><button className='btn btn-xs btn-secondary font-semibold'>Delete Order</button></td>
+            <td ><button onClick={() => deletingOrder(_id)} className='btn btn-xs btn-secondary font-semibold'>Delete Order</button></td>
             <td ><button className='btn btn-xs btn-primary font-semibold'>Proceed Order</button></td>
         </tr>
 
