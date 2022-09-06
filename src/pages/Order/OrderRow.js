@@ -1,8 +1,21 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 
 
 const OrderRow = ({ order, index, deletingOrder }) => {
+    const [user, loading] = useAuthState(auth);
+    const navigate = useNavigate();
     const { foodName, quantity, status, img, _id } = order;
+
+    const navigateToPlaceOrder = id => {
+        navigate(`/placeOrder/${id}`)
+    }
+    if (loading) {
+        return <Loading></Loading>
+    }
 
 
 
@@ -25,7 +38,7 @@ const OrderRow = ({ order, index, deletingOrder }) => {
             <td>{quantity}</td>
             <td className='text-primary font-semibold'>{status}</td>
             <td ><button onClick={() => deletingOrder(_id)} className='btn btn-xs btn-secondary font-semibold'>Delete Order</button></td>
-            <td ><button className='btn btn-xs btn-primary font-semibold'>Proceed Order</button></td>
+            <td ><button onClick={() => navigateToPlaceOrder(_id)} className='btn btn-xs btn-primary font-semibold'>Proceed Order</button></td>
         </tr>
 
 

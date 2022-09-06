@@ -16,6 +16,8 @@ import LunchDetail from './pages/Detail/LunchDetail';
 import DinnerDetail from './pages/Detail/DinnerDetail';
 import { ToastContainer } from 'react-toastify';
 import RequireAuth from './pages/Authentication/RequireAuth';
+import PlaceOrder from './pages/Order/PlaceOrder';
+import Payment from './pages/Order/Payment';
 
 
 function App() {
@@ -42,6 +44,16 @@ function App() {
         <Route path='/dinnerDetail/:id' element={
           <RequireAuth>
             < DinnerDetail />
+          </RequireAuth>
+        }></Route>
+        <Route path='/placeOrder/:id' element={
+          <RequireAuth>
+            < PlaceOrder />
+          </RequireAuth>
+        }></Route>
+        <Route path='/payment/:id' element={
+          <RequireAuth>
+            < Payment />
           </RequireAuth>
         }></Route>
         <Route path='/login' element={<Login />}></Route>
