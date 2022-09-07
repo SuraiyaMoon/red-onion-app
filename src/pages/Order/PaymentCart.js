@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useItemDetails from '../../Hooks/useItemDetail';
 
 const PaymentCart = ({ id }) => {
-    const [food, setFood] = useItemDetails(id);
+    const [food] = useItemDetails(id);
     const navigate = useNavigate();
     const navigateToPaymentPage = (id) => {
-        navigate(`/payment/${id}`)
+        navigate(`/payment/${id}`);
+        toast('Please pay for your order')
     }
     const total = food.total;
     const tax = 0.05 * total;

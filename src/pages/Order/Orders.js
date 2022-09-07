@@ -86,9 +86,6 @@ const Order = () => {
                     </tbody>
                 </table>
             </div>
-
-
-
         </div>
     );
 };

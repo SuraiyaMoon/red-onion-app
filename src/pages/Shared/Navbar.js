@@ -43,7 +43,7 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         {
             user && <>
-                <li><Link to="/">Dashboard</Link></li>
+                <li><Link to="/dashboard">Dashboard</Link></li>
             </>
         }
     </>
@@ -82,7 +82,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 <div class="indicator">
                     <Link to="/myOrder"><FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon></Link>
-                    <span class="badge badge-primary badge-xs indicator-item">{orders.length}</span>
+                    <span class="badge badge-primary badge-xs indicator-item">{orders?.length}</span>
                 </div>
                 <div className="flex-none">
                     <ul className="menu menu-horizontal p-0 flex items-center">

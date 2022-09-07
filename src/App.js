@@ -18,6 +18,8 @@ import { ToastContainer } from 'react-toastify';
 import RequireAuth from './pages/Authentication/RequireAuth';
 import PlaceOrder from './pages/Order/PlaceOrder';
 import Payment from './pages/Order/Payment';
+import Dashboard from './pages/Dasboard/Dashboard';
+import MyOrder from './pages/Dasboard/MyOrder';
 
 
 function App() {
@@ -59,6 +61,10 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/myOrder' element={<Order />}></Route>
+        <Route path='/dashboard' element={<Dashboard />}>
+          <Route index element={<MyOrder />}></Route>
+        </Route>
+
         <Route path='*' element={<NotMatch />}></Route>
 
       </Routes>

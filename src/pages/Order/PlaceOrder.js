@@ -9,17 +9,18 @@ import { useParams } from 'react-router-dom';
 const PlaceOrder = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { id } = useParams();
-    console.log(id)
-    const [clicked, setClicked] = useState(false)
+    // console.log(id)
+    const [clicked, setClicked] = useState(false);
     const onSubmit = async data => {
-        const deliveryType = data.deliveryType;
-        const location = data.location;
-        const homeName = data.homeName;
-        const Flat = data.Flat;
-        const instruction = data.instruction;
-
         setClicked(true)
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
 
+        })
         console.log(data, 'data')
 
     }
@@ -73,10 +74,10 @@ const PlaceOrder = () => {
                                 {errors.homeName?.type === 'required' && <span className="label-text-alt text-red-500 ">{errors.homeName.message}</span>}
 
                             </label>
-                            <input {...register("homeName", {
+                            <input {...register("houseName", {
                                 required: {
                                     value: true,
-                                    message: "House name is required"
+                                    message: "Please write your House Name"
                                 }
                             })}
                                 type="text" placeholder="Enter your House Name" className="input  w-full max-w-xs bg-base-200" />
