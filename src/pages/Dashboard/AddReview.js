@@ -50,7 +50,7 @@ const AddReview = () => {
                                         <p class="pt-1 text-sm text-gray-400">
                                             Upload your photo</p>
                                     </div>
-                                    <input {...register("image", {
+                                    <input {...register("img", {
                                         required: {
                                             value: true,
                                             message: "Image is required"
@@ -62,7 +62,7 @@ const AddReview = () => {
 
                     </div>
                 </div>
-                <textarea {...register("review", {
+                <textarea {...register("clientReview", {
                     required: {
                         value: true,
                         message: "Review is required"
