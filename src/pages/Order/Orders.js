@@ -15,7 +15,7 @@ const Order = () => {
         fetch(`http://localhost:5000/orderByEmail?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [])
+    }, [user.email])
 
 
 
@@ -47,7 +47,8 @@ const Order = () => {
                     <div className="flex items-center space-x-3">
                         <div className="avatar">
                             <div className="rounded-full w-16">
-                                <img src={user?.photoURL} />              </div>
+                                <img src={user?.photoURL} />
+                            </div>
                         </div>
                         <div>
                             <h1 className='text-2xl '>Hey <span className='text-primary font-semibold'>{user?.displayName}</span></h1>

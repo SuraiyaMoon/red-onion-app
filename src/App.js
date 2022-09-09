@@ -18,8 +18,10 @@ import { ToastContainer } from 'react-toastify';
 import RequireAuth from './pages/Authentication/RequireAuth';
 import PlaceOrder from './pages/Order/PlaceOrder';
 import Payment from './pages/Order/Payment';
-import Dashboard from './pages/Dasboard/Dashboard';
-import MyOrder from './pages/Dasboard/MyOrder';
+import Dashboard from './pages/Dashboard/Dashboard';
+import MyOrder from './pages/Dashboard/MyOrder';
+import AddReview from './pages/Dashboard/AddReview';
+import MyReview from './pages/Dashboard/MyReview';
 
 
 function App() {
@@ -61,8 +63,14 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/myOrder' element={<Order />}></Route>
-        <Route path='/dashboard' element={<Dashboard />}>
+        <Route path='/dashboard' element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        }>
           <Route index element={<MyOrder />}></Route>
+          <Route path='addReview' element={<AddReview />}></Route>
+          <Route path='myReview' element={<MyReview />}></Route>
         </Route>
 
         <Route path='*' element={<NotMatch />}></Route>
