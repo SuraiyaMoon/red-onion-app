@@ -4,8 +4,6 @@ import { useState } from 'react';
 import Review from './Review';
 
 const Reviews = () => {
-    const [click, setClick] = useState(false)
-    let index = 1;
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/review')
@@ -26,9 +24,9 @@ const Reviews = () => {
                     ></Review>)
                 }
             </div>
-            <div className="flex justify-center w-full py-2 gap-2">
+            <div className="flex justify-center w-full py-2 gap-4">
                 {
-                    reviews.map((review, index) => <a href={`#item${index + 1}`} className="radio bg-primary border-0 text-white font-semibold "
+                    reviews.map((review, index) => <a href={`#item${index + 1}`} className="radio bg-primary border-0 text-white font-semibold mt-2 "
                         key={review._id} checked >{index + 1}
 
                     </a>

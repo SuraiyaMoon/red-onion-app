@@ -6,6 +6,7 @@ import PaymentCart from './PaymentCart';
 
 import { useParams } from 'react-router-dom';
 
+
 const PlaceOrder = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { id } = useParams();
@@ -22,8 +23,8 @@ const PlaceOrder = () => {
 
         })
         console.log(data, 'data')
-
     }
+
 
 
     return (
@@ -32,9 +33,9 @@ const PlaceOrder = () => {
             backgroundSize: "cover",
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center'
-        }} className='flex items-center justify-around min-h-screen'>
+        }} className='flex lg:flex-row items-center flex-col justify-around min-h-screen'>
 
-            <div className="card  w-96 bg-base-100 shadow-xl ">
+            <div className="card w-96 bg-base-100 shadow-xl my-4 ">
                 <div className="card-body">
 
                     {/* <div className='flex justify-center '>
@@ -114,7 +115,7 @@ const PlaceOrder = () => {
 
                         </div>
 
-                        <input className='btn btn-primary w-full max-w-xs mt-6 font-light' type="submit" value="Save and Continue" />
+                        <input className={`btn  w-full max-w-xs mt-6 font-light ${clicked ? 'btn-disabled' : 'btn-primary'}`} type="submit" value="Save and Continue" />
                     </form>
 
                 </div>

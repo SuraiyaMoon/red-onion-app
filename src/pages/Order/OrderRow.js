@@ -6,16 +6,13 @@ import Loading from '../Shared/Loading';
 
 
 const OrderRow = ({ order, index, deletingOrder }) => {
-    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
     const { foodName, quantity, status, img, _id } = order;
 
     const navigateToPlaceOrder = id => {
         navigate(`/placeOrder/${id}`)
     }
-    if (loading) {
-        return <Loading></Loading>
-    }
+
 
 
 

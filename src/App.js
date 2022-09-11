@@ -22,11 +22,19 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import MyOrder from './pages/Dashboard/MyOrder';
 import AddReview from './pages/Dashboard/AddReview';
 import MyReview from './pages/Dashboard/MyReview';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from './firebase.init';
+import Loading from './pages/Shared/Loading';
 
 
 function App() {
+  const [user, loading] = useAuthState(auth)
+  if (loading) {
+    return <Loading />
+  }
   return (
     <div className="App">
+
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home />}></Route>

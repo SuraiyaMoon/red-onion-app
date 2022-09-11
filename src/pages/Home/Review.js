@@ -73,7 +73,7 @@ const Review = ({ review, index }) => {
                     <img src={img} />
                 </div>
             </div>
-            <h2>{name}</h2>
+            <h2 className='my-2'>{name}</h2>
             {ratingStar}
 
         </div>
